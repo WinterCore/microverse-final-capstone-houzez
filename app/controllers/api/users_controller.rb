@@ -3,7 +3,7 @@ class Api::UsersController < ApiController
     data = validate_id_token
     if data
       @user = create_or_update_user(data)
-      @token = encode_token({ id: @user.id })
+      @token = JwtHelper.encode({ id: @user.id })
       render 'users/login'
     else
       render json: { message: 'Invalid token' }, status: :unauthorized
