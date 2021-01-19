@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(version: 2021_01_18_172335) do
 
   create_table "houses", force: :cascade do |t|
     t.bigint "house_type_id", null: false
-    t.string "name"
-    t.text "description"
-    t.json "images"
-    t.float "price_per_month"
+    t.string "name", null: false
+    t.text "description", null: false
+    t.json "images", null: false
+    t.float "price_per_month", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["house_type_id"], name: "index_houses_on_house_type_id"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2021_01_18_172335) do
     t.string "picture"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["name"], name: "index_users_on_name"
+    t.index ["google_id"], name: "index_users_on_google_id"
   end
 
   add_foreign_key "favourites", "houses"
