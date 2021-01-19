@@ -18,7 +18,7 @@ RSpec.describe 'Unfavourite Houses Endpoint', type: :request do
     post api_house_unfavourite_path(house.id), headers: authenticated_headers(user)
 
     expect(response.status).to eq(200)
-    expect(response.parsed_body).to eq({ "message" => "Success" })
+    expect(response.parsed_body).to eq({ 'message' => 'Success' })
     expect(house.favourites.exists?(user_id: user)).to eq(false)
   end
 end

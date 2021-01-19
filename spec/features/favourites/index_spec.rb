@@ -24,8 +24,8 @@ RSpec.describe 'Get Favourites Endpoint', type: :request do
       images: house.images,
       house_type: {
         id: house.house_type.id,
-        name: house.house_type.name,
-      }.stringify_keys,
+        name: house.house_type.name
+      }.stringify_keys
     }
 
     expect(response.status).to eq(200)

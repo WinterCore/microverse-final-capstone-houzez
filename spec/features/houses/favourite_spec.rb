@@ -17,7 +17,7 @@ RSpec.describe 'Favourite Houses Endpoint', type: :request do
     post api_house_favourite_path(house.id), headers: authenticated_headers(user)
 
     expect(response.status).to eq(200)
-    expect(response.parsed_body).to eq({ "message" => "Success" })
+    expect(response.parsed_body).to eq({ 'message' => 'Success' })
     expect(house.favourites.exists?(user_id: user)).to eq(true)
   end
 
@@ -29,6 +29,6 @@ RSpec.describe 'Favourite Houses Endpoint', type: :request do
     post api_house_favourite_path(house.id), headers: authenticated_headers(user)
 
     expect(response.status).to eq(403)
-    expect(response.parsed_body).to eq({ "message" => "You've already favourited this house!" })
+    expect(response.parsed_body).to eq({ 'message' => "You've already favourited this house!" })
   end
 end

@@ -5,9 +5,9 @@ RSpec.describe 'Get House by ID Endpoint', type: :request do
   include Support
 
   it 'Should not allow unauthenticated users to show houses' do
-   get api_house_path(1)
+    get api_house_path(1)
 
-   expect(response.status).to eq(401)
+    expect(response.status).to eq(401)
   end
 
   it 'Should list a house by ID successfully' do
@@ -31,6 +31,6 @@ RSpec.describe 'Get House by ID Endpoint', type: :request do
     }
 
     expect(response.status).to eq(200)
-    expect(response.parsed_body).to eq("data" => result.stringify_keys)
+    expect(response.parsed_body).to eq('data' => result.stringify_keys)
   end
 end

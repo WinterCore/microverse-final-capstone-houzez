@@ -15,13 +15,13 @@ RSpec.describe 'Get House Types Endpoint', type: :request do
 
     get api_house_types_path, headers: authenticated_headers
 
-    houseTypes = HouseType.all
+    house_types = HouseType.all
 
     idx = rand(0...10)
 
     result = {
-      id: houseTypes[idx].id,
-      name: houseTypes[idx].name,
+      id: house_types[idx].id,
+      name: house_types[idx].name
     }
 
     expect(response.status).to eq(200)

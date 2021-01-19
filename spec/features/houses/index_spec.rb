@@ -25,7 +25,7 @@ RSpec.describe 'Get Houses Endpoint', type: :request do
       images: houses[idx].images,
       house_type: {
         id: houses[idx].house_type.id,
-        name: houses[idx].house_type.name,
+        name: houses[idx].house_type.name
       }.stringify_keys
     }
 
@@ -34,7 +34,7 @@ RSpec.describe 'Get Houses Endpoint', type: :request do
   end
 
   it 'Should provide the data in multiple pages' do
-    houses = create_list(:house, 21)
+    create_list(:house, 21)
 
     get api_houses_path, { params: { page: 2 }, headers: authenticated_headers }
 
@@ -47,7 +47,7 @@ RSpec.describe 'Get Houses Endpoint', type: :request do
       images: houses[idx].images,
       house_type: {
         id: houses[idx].house_type.id,
-        name: houses[idx].house_type.name,
+        name: houses[idx].house_type.name
       }.stringify_keys
     }
 
