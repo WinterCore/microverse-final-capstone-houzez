@@ -12,8 +12,17 @@ export const login = (token) => async (dispatch) => {
 
     try {
         const { data } = await Api({ ...LOGIN_ENDPOINT(), data: { token } });
-        dispatch(createAction(LOGIN, data.data));
+        const user = { ...data.data, token: data.token };
+        window.localStorage.setItem('user', JSON.stringify(user));
+        Api.defaults.headers.common['Authorization'] = user.token;
+        dispatch(createAction(LOGIN, user));
     } catch (e) {
         dispatch(createAction(AUTHENTICATION_ERROR, 'Something happened!'));
     }
+};
+
+export const logout = () => (dispatch) => {
+  dispatch(createAction(LOGOUT));
+  window.localStorage.setItem('user', JSON.stringify(null));
+  Api.defaults.headers.common['Authorization'] = '';
 };

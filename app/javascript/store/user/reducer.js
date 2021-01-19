@@ -1,7 +1,9 @@
 import { LOGIN, LOGOUT, AUTHENTICATING, AUTHENTICATION_ERROR } from './actions';
 
+const user = JSON.parse(window.localStorage.getItem('user'));
+
 export const INITIAL_STATE = {
-    user: null,
+    user,
     authenticating: false,
     error: null,
 };
