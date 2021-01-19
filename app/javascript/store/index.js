@@ -7,12 +7,14 @@ const INITIAL_STATE = {
     user: USER_INITIAL_STATE,
 };
 
+const myCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 const store = createStore(
     combineReducers({
         user: userReducer,
     }),
     INITIAL_STATE,
-    compose(applyMiddleware(ReduxThunk)),
+    myCompose(applyMiddleware(ReduxThunk)),
 );
 
 export default store;
