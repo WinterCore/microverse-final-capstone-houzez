@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  root 'static#index'
-
   namespace :api do
     post '/login', to: 'users#login'
 
@@ -11,4 +9,7 @@ Rails.application.routes.draw do
       post 'unfavourite', to: 'houses#unfavourite'
     end
   end
+
+  root 'static#index'
+  get '*path', to: 'static#index'
 end
