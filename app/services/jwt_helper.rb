@@ -4,10 +4,8 @@ class JwtHelper
   end
 
   def self.decode(token)
-    begin
-      JWT.decode(token, Rails.application.credentials.jwt_secret, true, algorithm: 'HS256')
-    rescue JWT::DecodeError
-      nil
-    end
+    JWT.decode(token, Rails.application.credentials.jwt_secret, true, algorithm: 'HS256')
+  rescue JWT::DecodeError
+    nil
   end
 end

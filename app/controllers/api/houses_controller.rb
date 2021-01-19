@@ -12,13 +12,13 @@ class Api::HousesController < ApiController
       .offset(@page * HOUSES_PER_PAGE)
       .limit(HOUSES_PER_PAGE)
 
-    render "houses/index"
+    render 'houses/index'
   end
 
   def show
     @house = House.includes(:house_type).find(params[:id])
 
-    render "houses/show"
+    render 'houses/show'
   end
 
   def favourite
@@ -32,7 +32,7 @@ class Api::HousesController < ApiController
 
   def unfavourite
     favourite = logged_in_user.favourites.find_by(house_id: params[:house_id])
-    favourite.delete unless favourite.nil?
+    favourite&.delete
     render json: { message: 'Success' }
   end
 end

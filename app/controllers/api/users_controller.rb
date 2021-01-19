@@ -18,7 +18,7 @@ class Api::UsersController < ApiController
       name: data['name'],
       email: data['email'],
       picture: data['picture'],
-      google_id: data['sub'],
+      google_id: data['sub']
     }
     if user
       user.update(filtered_data)
@@ -32,8 +32,8 @@ class Api::UsersController < ApiController
     validator = GoogleIDToken::Validator.new
     begin
       client_id = Rails.application.credentials.google_sign_in[:client_id]
-      payload = validator.check(login_params[:token], client_id)
-    rescue => error
+      validator.check(login_params[:token], client_id)
+    rescue StandardError
       nil
     end
   end
