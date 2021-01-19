@@ -1,6 +1,8 @@
-class Api::HouseTypesController < ApplicationController
+class Api::HouseTypesController < ApiController
+  before_action :authorized
+
   def index
-    types = HouseType.all
-    render_response json: types
+    @houseTypes = HouseType.all
+    render 'house_types/index'
   end
 end

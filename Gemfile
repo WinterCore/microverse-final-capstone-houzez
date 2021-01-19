@@ -26,6 +26,8 @@ gem 'jbuilder', '~> 2.7'
 # gem 'image_processing', '~> 1.2'
 #
 
+gem 'rabl'
+gem 'oj'
 gem 'jwt'
 gem 'rack-cors'
 gem 'react-rails'

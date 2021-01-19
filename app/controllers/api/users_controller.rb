@@ -1,10 +1,10 @@
-class Api::UsersController < ApplicationController
+class Api::UsersController < ApiController
   def login
     data = validate_id_token
     if data
-      user = create_or_update_user(data)
-      token = encode_token({ id: user.id })
-      render_response json: user.as_json, additional: { token: token }
+      @user = create_or_update_user(data)
+      @token = encode_token({ id: @user.id })
+      render 'users/login'
     else
       render json: { message: 'Invalid token' }, status: :unauthorized
     end
