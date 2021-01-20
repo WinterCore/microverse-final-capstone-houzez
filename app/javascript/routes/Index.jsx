@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 
+import HousesGrid from '../components/HousesGrid';
 const Index = ({ isLoggedIn }) => {
     if (!isLoggedIn) {
         return <Redirect to="/login" />
@@ -10,6 +11,7 @@ const Index = ({ isLoggedIn }) => {
 
     return (
         <div>
+          <HousesGrid />
         </div>
     );
 };

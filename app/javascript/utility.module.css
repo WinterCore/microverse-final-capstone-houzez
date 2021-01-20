@@ -10,6 +10,23 @@
 .flex.alignEnd { align-items: flex-end; }
 
 
+.errorHeading,
+.infoHeading {
+  text-align: center;
+  margin: 40px 0;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.errorHeading {
+  color: red;
+}
+
+.itemsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+
 .bold { font-weight: bold; }
 
 .mr1 { margin-right: 6px; }
