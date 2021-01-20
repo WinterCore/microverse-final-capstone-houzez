@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 
 import HousesGrid from '../components/HousesGrid';
+import Filter from '../components/Filter';
+
 const Index = ({ isLoggedIn }) => {
     if (!isLoggedIn) {
         return <Redirect to="/login" />
@@ -11,6 +13,7 @@ const Index = ({ isLoggedIn }) => {
 
     return (
         <div>
+          <Filter />
           <HousesGrid />
         </div>
     );

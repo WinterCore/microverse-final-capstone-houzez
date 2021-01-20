@@ -9,6 +9,26 @@
 .flex.alignStart { align-items: flex-start; }
 .flex.alignEnd { align-items: flex-end; }
 
+.badge {
+  display: inline-block;
+  border: 2px solid #AAA;
+  color: #AAA;
+  border-radius: 9999px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 30px;
+  text-decoration: none;
+  margin: 6px;
+  cursor: pointer;
+  transition: all 200ms linear;
+}
+
+.badge:hover,
+.badge.active {
+  background: #FF5617;
+  color: #FFF;
+  border: 2px solid #FF5617;
+}
 
 .errorHeading,
 .infoHeading {
