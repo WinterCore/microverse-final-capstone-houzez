@@ -1,11 +1,14 @@
 header {
   height: 62px;
-  background: #FFF;
+  background: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+  position: sticky;
+  top: 0;
 }
 
 .profilePicture {
@@ -23,7 +26,7 @@ header {
   cursor: pointer;
 }
 
-.nameDropdown:after {
+.nameDropdown::after {
   content: '';
   right: -14px;
   top: calc(50% - 3px);
@@ -40,7 +43,7 @@ header {
   position: absolute;
   top: calc(100% - 4px);
   min-width: 150px;
-  background: #FFF;
+  background: #fff;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   padding: 4px 0;
   border-radius: 4px;
@@ -57,15 +60,16 @@ header {
 
 .dropdownOption {
   padding: 8px 8px;
-  background: #FFF;
+  background: #fff;
   transition: background 200ms linear;
 }
+
 .dropdownOption:hover {
-  background: #EEE;
+  background: #eee;
 }
 
 @media (max-width: 768px) {
-  .dropdownContainer { display: none }
-  .nameDropdown:after { display: none }
+  .dropdownContainer { display: none; }
+  .nameDropdown::after { display: none; }
   .nameDropdown { margin-right: 16px; }
 }

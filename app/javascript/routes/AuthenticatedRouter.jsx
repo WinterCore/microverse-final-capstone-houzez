@@ -4,8 +4,10 @@ import {bindActionCreators} from 'redux';
 import PropTypes from 'prop-types';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import Index from '../routes/Index';
 import Header from '../containers/Header';
+
+import Index from '../routes/Index';
+import House from '../routes/House';
 
 const AuthenticatedRouter = ({ isLoggedIn }) => {
   if (!isLoggedIn) {
@@ -17,6 +19,7 @@ const AuthenticatedRouter = ({ isLoggedIn }) => {
       <Header />
       <Switch>
         <Route exact path="/" component={ Index } />
+        <Route exact path="/houses/:id" component={ House } />
       </Switch>
     </>
   );

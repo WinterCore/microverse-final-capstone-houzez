@@ -11,8 +11,8 @@
 
 .badge {
   display: inline-block;
-  border: 2px solid #AAA;
-  color: #AAA;
+  border: 2px solid #aaa;
+  color: #aaa;
   border-radius: 9999px;
   height: 40px;
   line-height: 40px;
@@ -25,9 +25,9 @@
 
 .badge:hover,
 .badge.active {
-  background: #FF5617;
-  color: #FFF;
-  border: 2px solid #FF5617;
+  background: #ff5617;
+  color: #fff;
+  border: 2px solid #ff5617;
 }
 
 .errorHeading,

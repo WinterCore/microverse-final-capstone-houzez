@@ -7,7 +7,7 @@ import style from './HousesGridItem.module.css';
 
 const HousesGridItem = ({ id, name, images, price_per_month }) => {
   return (
-    <Link to={`/house/${id}`} className={style.container}>
+    <Link to={`/houses/${id}`} className={style.container}>
       <div className={style.image} style={{ backgroundImage: `url("${images[0]}?${Math.random()}")` }}  />
       <div className={style.footer}>
         <div>

@@ -21,6 +21,12 @@ export const houseSnippet = {
   house_type: PropTypes.shape(houseType),
 };
 
+export const house = {
+  ...houseSnippet,
+  description: PropTypes.string.isRequired,
+  favourited: PropTypes.bool.isRequired,
+};
+
 export const state = {
   user: PropTypes.shape({
     user,
