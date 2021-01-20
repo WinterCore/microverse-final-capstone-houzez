@@ -10,8 +10,9 @@ const api = Axios.create({
   baseURL: API_URL,
   headers: {
     Accept: 'application/json',
-    Authorization: `Bearer ${user ? user.token : ''}`,
   },
 });
+
+api.defaults.headers.common.Authorization = `Bearer ${user ? user.token : ''}`;
 
 export default api;

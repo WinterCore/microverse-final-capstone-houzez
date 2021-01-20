@@ -14,7 +14,7 @@ export const login = token => async dispatch => {
     const { data } = await Api({ ...LOGIN_ENDPOINT(), data: { token } });
     const user = { ...data.data, token: data.token };
     window.localStorage.setItem('user', JSON.stringify(user));
-    Api.defaults.headers.common.Authorization = user.token;
+    Api.defaults.headers.common.Authorization = `Bearer ${user.token}`;
     dispatch(createAction(LOGIN, user));
   } catch (e) {
     dispatch(createAction(AUTHENTICATION_ERROR, 'Something happened!'));
