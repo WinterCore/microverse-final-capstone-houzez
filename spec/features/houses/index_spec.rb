@@ -11,13 +11,13 @@ RSpec.describe 'Get Houses Endpoint', type: :request do
   end
 
   it 'Should list houses successfully' do
-    create_list(:house, 21)
+    create_list(:house, 41)
 
     get api_houses_path, headers: authenticated_headers
 
     houses = House.order(created_at: :desc)
 
-    idx = rand(0...10)
+    idx = rand(0...20)
 
     result = {
       id: houses[idx].id,
@@ -35,11 +35,11 @@ RSpec.describe 'Get Houses Endpoint', type: :request do
   end
 
   it 'Should provide the data in multiple pages' do
-    create_list(:house, 21)
+    create_list(:house, 41)
 
     get api_houses_path, { params: { page: 2 }, headers: authenticated_headers }
 
-    idx = rand(10...20)
+    idx = rand(20...40)
 
     houses = House.order(created_at: :desc)
     result = {
@@ -54,6 +54,6 @@ RSpec.describe 'Get Houses Endpoint', type: :request do
     }
 
     expect(response.status).to eq(200)
-    expect(response.parsed_body['data'][idx % 10]).to eq(result.stringify_keys)
+    expect(response.parsed_body['data'][idx % 20]).to eq(result.stringify_keys)
   end
 end

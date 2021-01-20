@@ -1,7 +1,7 @@
 class Api::HousesController < ApiController
   before_action :authorized
 
-  HOUSES_PER_PAGE = 10
+  HOUSES_PER_PAGE = 20
 
   def index
     @page = params.fetch(:page, 1).to_i - 1
