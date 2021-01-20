@@ -1,16 +1,17 @@
 import Axios from 'axios';
 
-import {API_URL} from './endpoints';
-import {INITIAL_STATE} from '../store/user/reducer';
+import { API_URL } from './endpoints';
 
 export * from './endpoints';
 
+const user = JSON.parse(window.localStorage.getItem('user'));
+
 const api = Axios.create({
-    baseURL: API_URL,
-    headers: {
-      'Accept': 'application/json',
-      'Authorization': `Bearer ${INITIAL_STATE.user ? INITIAL_STATE.user.token : ''}`
-    },
+  baseURL: API_URL,
+  headers: {
+    Accept: 'application/json',
+    Authorization: `Bearer ${user ? user.token : ''}`,
+  },
 });
 
 export default api;
