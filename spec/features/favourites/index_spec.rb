@@ -22,6 +22,7 @@ RSpec.describe 'Get Favourites Endpoint', type: :request do
       id: house.id,
       name: house.name,
       images: house.images,
+      price_per_month: house.price_per_month,
       house_type: {
         id: house.house_type.id,
         name: house.house_type.name

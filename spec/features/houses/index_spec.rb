@@ -23,6 +23,7 @@ RSpec.describe 'Get Houses Endpoint', type: :request do
       id: houses[idx].id,
       name: houses[idx].name,
       images: houses[idx].images,
+      price_per_month: houses[idx].price_per_month,
       house_type: {
         id: houses[idx].house_type.id,
         name: houses[idx].house_type.name
@@ -45,6 +46,7 @@ RSpec.describe 'Get Houses Endpoint', type: :request do
       id: houses[idx].id,
       name: houses[idx].name,
       images: houses[idx].images,
+      price_per_month: houses[idx].price_per_month,
       house_type: {
         id: houses[idx].house_type.id,
         name: houses[idx].house_type.name
