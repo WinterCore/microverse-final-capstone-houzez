@@ -4,7 +4,6 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.16);
   transition: box-shadow 200ms linear;
   border-radius: 4px;
-  text-decoration: none;
   color: #000;
   font-family: Robot, sans-serif;
 }
