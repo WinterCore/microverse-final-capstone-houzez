@@ -1,20 +1,23 @@
 import React from 'react';
-import {bindActionCreators} from 'redux';
+import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import {connect} from 'react-redux';
-import {withRouter} from 'react-router';
-import {useSnackbar} from 'notistack';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { useSnackbar } from 'notistack';
 
-import {logout} from '../store/user/actions';
+import { logout } from '../store/user/actions';
 import * as CustomPropTypes from '../common-prop-types';
 
-import styles from './Header.module.css';
-import utilStyles from '../utility.module.css';
+import style from './Header.module.css';
+import utilStyle from '../utility.module.css';
 
-const Header = ({ user, logoutUser, history }) => {
+const Header = ({
+  user, logoutUser, history, handleSidenavToggle,
+}) => {
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
-  const {enqueueSnackbar} = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleDropdownMouseEnter = () => setIsDropdownOpen(true);
   const handleDropdownMouseLeave = () => setIsDropdownOpen(false);
@@ -27,28 +30,39 @@ const Header = ({ user, logoutUser, history }) => {
 
   return (
     <header>
-      <div className={styles.hamburger}></div>
-      <div className={classnames(utilStyles.flex, utilStyles.alignCenter)}>
-        <div className={styles.nameDropdown} onMouseEnter={ handleDropdownMouseEnter } onMouseLeave={handleDropdownMouseLeave}>
+      <div>
+        <div className={style.hamburger} onClick={handleSidenavToggle}>
+          <span className="material-icons">
+            menu
+          </span>
+        </div>
+        <nav>
+          <Link to="/">Houses</Link>
+          <Link to="/favourites">Favourites</Link>
+        </nav>
+      </div>
+      <div className={classnames(utilStyle.flex, utilStyle.alignCenter)}>
+        <div className={style.nameDropdown} onMouseEnter={handleDropdownMouseEnter} onMouseLeave={handleDropdownMouseLeave}>
           { user.name }
-          <div className={classnames(styles.dropdownContainer, { [styles.shown]: isDropdownOpen })}>
-            <div className={styles.dropdownOption} onClick={ handleLogoutClick }>Logout</div>
+          <div className={classnames(style.dropdownContainer, { [style.shown]: isDropdownOpen })}>
+            <div className={style.dropdownOption} onClick={handleLogoutClick}>Logout</div>
           </div>
         </div>
-        <div className={styles.profilePicture}>
-          <img src={ user.picture } referrerPolicy="no-referrer" />
+        <div className={style.profilePicture}>
+          <img src={user.picture} referrerPolicy="no-referrer" />
         </div>
       </div>
     </header>
   );
 };
 
-const mapStateToProps = (state) => ({ user: state.user.user });
-const mapDispatchToProps = (dispatch) => bindActionCreators({ logoutUser: logout }, dispatch);
+const mapStateToProps = state => ({ user: state.user.user });
+const mapDispatchToProps = dispatch => bindActionCreators({ logoutUser: logout }, dispatch);
 
 Header.propTypes = {
-  user: CustomPropTypes.user,
-  logoutUser: PropTypes.func.isRequired
+  user: PropTypes.shape(CustomPropTypes.user).isRequired,
+  logoutUser: PropTypes.func.isRequired,
+  handleSidenavToggle: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header));

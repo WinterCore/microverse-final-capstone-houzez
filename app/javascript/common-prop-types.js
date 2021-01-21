@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 
-export const user = PropTypes.shape({
+export const user = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   picture: PropTypes.string.isRequired,
   token: PropTypes.string.isRequired,
-});
+};
 
 export const houseType = {
   id: PropTypes.number.isRequired,

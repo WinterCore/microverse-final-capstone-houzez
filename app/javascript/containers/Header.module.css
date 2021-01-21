@@ -11,6 +11,31 @@ header {
   top: 0;
 }
 
+header nav a {
+  font-weight: bold;
+  color: #FF5617;
+  position: relative;
+}
+
+header nav a + a {
+  margin-left: 20px;
+}
+
+header nav a:after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  height: 2px;
+  background: #FF5617;
+  transition: all 150ms ease-in-out;
+  width: 0%;
+}
+
+header nav a:hover:after {
+  width: 100%;
+}
+
 .profilePicture {
   width: 40px;
   height: 40px;
@@ -62,14 +87,28 @@ header {
   padding: 8px 8px;
   background: #fff;
   transition: background 200ms linear;
+  display: block;
+  color: #000;
 }
 
 .dropdownOption:hover {
   background: #eee;
 }
 
+.hamburger {
+  cursor: pointer;
+  display: none;
+}
+
 @media (max-width: 768px) {
   .dropdownContainer { display: none; }
   .nameDropdown::after { display: none; }
   .nameDropdown { margin-right: 16px; }
+
+  header nav {
+    display: none;
+  }
+  .hamburger {
+    display: block;
+  }
 }
