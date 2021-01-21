@@ -6,26 +6,35 @@ import Loader from '../containers/Loader';
 import styles from './Button.module.css';
 import utilStyles from '../utility.module.css';
 
-const Button = ({ children, onClick, disabled, loading, fullWidth, flat }) => {
-  return (
-    <button
-      className={classnames(styles.button, styles.filled, { [styles.fullWidth]: fullWidth, [styles.flat]: flat})}
-      onClick={onClick}
-      disabled={disabled || loading}
-    >
-      {children}
-      {loading && <Loader width="20px" color="#FFF" className={ utilStyles.ml2 } />}
-    </button>
-  );
-};
+const Button = ({
+  children, onClick, disabled, loading, fullWidth, flat, className,
+}) => (
+  <button
+    className={
+      classnames(
+        styles.button,
+        styles.filled,
+        { [styles.fullWidth]: fullWidth, [styles.flat]: flat },
+        className,
+      )
+    }
+    onClick={e => !disabled && onClick(e)}
+    disabled={disabled || loading}
+    type="button"
+  >
+    {children}
+    {loading && <Loader width="20px" color="#FFF" className={utilStyles.ml2} />}
+  </button>
+);
 
 Button.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  disabled: PropTypes.bool.isRequired,
-  loading: PropTypes.bool.isRequired,
-  className: PropTypes.string.isRequired,
-  fullWidth: PropTypes.bool.isRequired,
-  flat: PropTypes.bool.isRequired,
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool,
+  loading: PropTypes.bool,
+  className: PropTypes.string,
+  fullWidth: PropTypes.bool,
+  flat: PropTypes.bool,
+  children: PropTypes.node.isRequired,
 };
 
 Button.defaultProps = {

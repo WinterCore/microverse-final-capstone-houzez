@@ -1,20 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {withRouter} from 'react-router';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { withRouter } from 'react-router';
 import queryString from 'query-string';
 
 import ApiResourceRenderer from './ApiResourceRenderer';
-import {fetch} from '../store/houses/actions';
+import { fetch } from '../store/houses/actions';
 
 import HousesGridItem from './HousesGridItem';
 
 import utilStyles from '../utility.module.css';
-import {houseSnippet} from '../common-prop-types';
+import { houseSnippet } from '../common-prop-types';
 
-const HousesGrid = ({ data, isLoading, isLoadingMore, fetchHouses, page, houseTypeId, hasMore }) => {
-  const items = data.map(item => <HousesGridItem key={item.id} {...item} />);
+const HousesGrid = ({
+  data, isLoading, isLoadingMore, fetchHouses, page, houseTypeId, hasMore,
+}) => {
+  /* eslint-disable camelcase */
+  const items = data.map(item => (
+    <HousesGridItem
+      key={item.id}
+      id={item.id}
+      name={item.name}
+      images={item.images}
+      price_per_month={item.price_per_month}
+    />
+  ));
+  /* eslint-enable camelcase */
   const containerRef = React.createRef(null);
 
   const checkLoadMore = () => {
@@ -42,14 +54,16 @@ const HousesGrid = ({ data, isLoading, isLoadingMore, fetchHouses, page, houseTy
       </div>
       { !hasMore && (
         <div className={utilStyles.infoHeading}>
-          You've reached the end!
+          You&apos;ve reached the end!
         </div>
       )}
     </>
   );
 };
 
-const HousesGridRenderer = ({ isLoading, data, error, isLoadingMore, fetchHouses, page, location, hasMore }) => {
+const HousesGridRenderer = ({
+  isLoading, data, error, isLoadingMore, fetchHouses, page, location, hasMore,
+}) => {
   const type = (+queryString.parse(location.search).type) || undefined;
 
   React.useEffect(() => fetchHouses(type), [fetchHouses, type]);
@@ -90,7 +104,16 @@ HousesGrid.propTypes = {
   houseTypeId: PropTypes.number,
 };
 
-const mapStateToProps = (state) => state.houses;
-const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchHouses: fetch }, dispatch);
+HousesGridRenderer.defaultProps = {
+  data: null,
+  error: null,
+};
+
+HousesGrid.defaultProps = {
+  houseTypeId: null,
+};
+
+const mapStateToProps = state => state.houses;
+const mapDispatchToProps = dispatch => bindActionCreators({ fetchHouses: fetch }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(HousesGridRenderer));

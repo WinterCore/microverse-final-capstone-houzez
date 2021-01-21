@@ -10,6 +10,7 @@ import { logout } from '../store/user/actions';
 import { user } from '../common-prop-types';
 
 import style from './Sidenav.module.css';
+import utilStyle from '../utility.module.css';
 
 const Sidenav = ({
   user, isOpen, location: { pathname }, logout,
@@ -17,7 +18,7 @@ const Sidenav = ({
   <div className={classnames(style.sidenav, { [style.open]: isOpen })}>
     <div>
       <div className={style.userInfo}>
-        <img src={user.picture} />
+        <img src={user.picture} alt={user.name} />
         <div className={style.name}>{user.name}</div>
         <div className={style.email}>{user.email}</div>
       </div>
@@ -43,15 +44,16 @@ const Sidenav = ({
       </div>
     </div>
     <div>
-      <div
-        className={style.link}
+      <button
+        className={classnames(style.link, utilStyle.bland)}
+        type="button"
         onClick={logout}
       >
         <span className="material-icons">
           power_settings_new
         </span>
         Logout
-      </div>
+      </button>
     </div>
   </div>
 );
@@ -62,6 +64,10 @@ const mapDispatchToProps = dispatch => bindActionCreators({ logout }, dispatch);
 Sidenav.propTypes = {
   user: PropTypes.shape(user).isRequired,
   isOpen: PropTypes.bool.isRequired,
+  logout: PropTypes.func.isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Sidenav));

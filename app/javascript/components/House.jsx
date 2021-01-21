@@ -1,21 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {fetch, changeFavourite} from '../store/house/actions';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import {Carousel} from 'react-responsive-carousel';
-import {useSnackbar} from 'notistack';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { Carousel } from 'react-responsive-carousel';
+import { useSnackbar } from 'notistack';
 
+import { fetch, changeFavourite } from '../store/house/actions';
 import ApiResourceRenderer from './ApiResourceRenderer';
 import Button from './Button';
 
-import {house} from '../common-prop-types';
+import { house } from '../common-prop-types';
 
 import style from './House.module.css';
 
-const House = ({ id, name, images, price_per_month, house_type, favourited, description, changeFavouriteState }) => {
+/* eslint-disable camelcase */
+const House = ({
+  id, name, images, price_per_month, house_type, favourited, description, changeFavouriteState,
+}) => {
+/* eslint-enable camelcase */
   const { enqueueSnackbar } = useSnackbar();
   const [isLoading, setIsLoading] = React.useState(false);
 
@@ -24,11 +28,11 @@ const House = ({ id, name, images, price_per_month, house_type, favourited, desc
     changeFavouriteState(id, !favourited)
       .then(({ message }) => {
         setIsLoading(false);
-        enqueueSnackbar(message, { variant: 'success' })
+        enqueueSnackbar(message, { variant: 'success' });
       })
       .catch(() => {
         setIsLoading(false);
-        enqueueSnackbar('Something happened', { variant: 'error' })
+        enqueueSnackbar('Something happened', { variant: 'error' });
       });
   };
 
@@ -36,14 +40,22 @@ const House = ({ id, name, images, price_per_month, house_type, favourited, desc
     <div className={style.outerContainer}>
       <div className={style.container}>
         <Carousel showThumbs={false} showStatus={false}>
-          {images.map(img => <img key={img} src={img} />)}
+          {images.map((img, i) => <img alt={`House ${i}`} key={img} src={img} />)}
         </Carousel>
         <div className={style.content}>
           <div>
             <h1>{name}</h1>
-            <div className={style.type}>Type: <Link to={`/?type=${house_type.id}`}>{house_type.name}</Link></div>
+            <div className={style.type}>
+              Type:
+              <Link to={`/?type=${house_type.id}`}>{house_type.name}</Link>
+            </div>
             <div className={style.priceOuter}>
-              <div className={style.price}><span>$</span>{price_per_month}</div>
+              <div className={style.price}>
+                <span>$</span>
+                { /* eslint-disable camelcase */ }
+                {price_per_month}
+                { /* eslint-enable camelcase */ }
+              </div>
               <div>per month</div>
             </div>
             <p>{description}</p>
@@ -63,7 +75,9 @@ const House = ({ id, name, images, price_per_month, house_type, favourited, desc
   );
 };
 
-const HouseRenderer = ({ data, isLoading, error, fetchHouse, houseId, changeFavouriteState }) => {
+const HouseRenderer = ({
+  data, isLoading, error, fetchHouse, houseId, changeFavouriteState,
+}) => {
   React.useEffect(() => fetchHouse(houseId), [fetchHouse, houseId]);
 
   return (
@@ -72,12 +86,20 @@ const HouseRenderer = ({ data, isLoading, error, fetchHouse, houseId, changeFavo
       loaderWidth="200px"
       error={error}
       empty={!data || data.length === 0}
+      /* eslint-disable camelcase */
       render={() => (
         <House
-          {...data}
+          id={data.id}
+          name={data.name}
+          images={data.images}
+          price_per_month={data.price_per_month}
+          house_type={data.house_type}
+          favourited={data.favourited}
+          description={data.description}
           changeFavouriteState={changeFavouriteState}
         />
       )}
+      /* eslint-enable camelcase */
     />
   );
 };
@@ -89,12 +111,19 @@ HouseRenderer.propTypes = {
   data: PropTypes.shape(house),
   isLoading: PropTypes.bool.isRequired,
   error: PropTypes.string,
+  fetchHouse: PropTypes.func.isRequired,
+  changeFavouriteState: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => state.house;
-const mapDispatchToProps = (dispatch) => bindActionCreators({
+HouseRenderer.defaultProps = {
+  data: null,
+  error: null,
+};
+
+const mapStateToProps = state => state.house;
+const mapDispatchToProps = dispatch => bindActionCreators({
   fetchHouse: fetch,
-  changeFavouriteState: changeFavourite
+  changeFavouriteState: changeFavourite,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(HouseRenderer);

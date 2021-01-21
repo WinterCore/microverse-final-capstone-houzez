@@ -5,13 +5,6 @@
   transition: box-shadow 200ms linear;
   border-radius: 4px;
   color: #000;
-  font-family: Robot, sans-serif;
-}
-
-.price,
-.name,
-.container {
-  font-family: Roboto, sans-serif;
 }
 
 .container:hover {

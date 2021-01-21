@@ -10,7 +10,7 @@
 .flex.alignEnd { align-items: flex-end; }
 
 .mainOuterContainer {
-  background: #FFF;
+  background: #fff;
   transition: all 300ms ease-in-out;
   height: 100vh;
   overflow-y: scroll;
@@ -20,7 +20,7 @@
   .mainOuterContainer.openSidenav {
     transform: translateX(300px) translateY(5vh);
     height: 90vh;
-    box-shadow: -10px 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    box-shadow: -10px 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
   }
 }
 
@@ -62,12 +62,17 @@
 }
 
 h1.heading {
-  font-family: Roboto, sans-serif;
   font-size: 32px;
   text-align: center;
   margin: 28px 0;
   font-weight: bold;
   color: #793acc;
+}
+
+button.bland {
+  border: none;
+  background: none;
+  text-align: left;
 }
 
 .bold { font-weight: bold; }

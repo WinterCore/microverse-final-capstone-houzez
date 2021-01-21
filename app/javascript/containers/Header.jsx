@@ -31,25 +31,39 @@ const Header = ({
   return (
     <header>
       <div>
-        <div className={style.hamburger} onClick={handleSidenavToggle}>
+        <button
+          type="button"
+          className={classnames(style.hamburger, utilStyle.bland)}
+          onClick={handleSidenavToggle}
+        >
           <span className="material-icons">
             menu
           </span>
-        </div>
+        </button>
         <nav>
           <Link to="/">Houses</Link>
           <Link to="/favourites">Favourites</Link>
         </nav>
       </div>
       <div className={classnames(utilStyle.flex, utilStyle.alignCenter)}>
-        <div className={style.nameDropdown} onMouseEnter={handleDropdownMouseEnter} onMouseLeave={handleDropdownMouseLeave}>
+        <div
+          className={style.nameDropdown}
+          onMouseEnter={handleDropdownMouseEnter}
+          onMouseLeave={handleDropdownMouseLeave}
+        >
           { user.name }
           <div className={classnames(style.dropdownContainer, { [style.shown]: isDropdownOpen })}>
-            <div className={style.dropdownOption} onClick={handleLogoutClick}>Logout</div>
+            <button
+              className={classnames(style.dropdownOption, utilStyle.bland)}
+              onClick={handleLogoutClick}
+              type="button"
+            >
+              Logout
+            </button>
           </div>
         </div>
         <div className={style.profilePicture}>
-          <img src={user.picture} referrerPolicy="no-referrer" />
+          <img src={user.picture} alt={user.name} referrerPolicy="no-referrer" />
         </div>
       </div>
     </header>
@@ -63,6 +77,9 @@ Header.propTypes = {
   user: PropTypes.shape(CustomPropTypes.user).isRequired,
   logoutUser: PropTypes.func.isRequired,
   handleSidenavToggle: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header));

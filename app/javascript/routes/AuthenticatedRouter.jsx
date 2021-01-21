@@ -31,7 +31,12 @@ const AuthenticatedRouter = ({ isLoggedIn }) => {
     <>
       <Sidenav isOpen={isSidenavOpen} />
       <div
-        className={classnames(utilStyle.mainOuterContainer, { [utilStyle.openSidenav]: isSidenavOpen })}
+        className={
+          classnames(
+            utilStyle.mainOuterContainer,
+            { [utilStyle.openSidenav]: isSidenavOpen },
+          )
+        }
       >
         <Header handleSidenavToggle={toggleSidenav} />
         <main>
@@ -47,10 +52,9 @@ const AuthenticatedRouter = ({ isLoggedIn }) => {
 };
 
 const mapStateToProps = state => ({ isLoggedIn: !!state.user.user, error: state.user.error });
-const mapDispatchToProps = dispatch => ({});
 
 AuthenticatedRouter.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthenticatedRouter);
+export default connect(mapStateToProps)(AuthenticatedRouter);

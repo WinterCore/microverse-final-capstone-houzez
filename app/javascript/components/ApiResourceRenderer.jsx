@@ -5,7 +5,9 @@ import Loader from '../containers/Loader';
 
 import utilStyles from '../utility.module.css';
 
-const ApiResourceRenderer = ({ isLoading, loaderWidth, error, empty, render }) => {
+const ApiResourceRenderer = ({
+  isLoading, loaderWidth, error, empty, render,
+}) => {
   if (error) {
     return <h2 className={utilStyles.errorHeading}>{error}</h2>;
   }

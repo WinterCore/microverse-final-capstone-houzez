@@ -13,7 +13,7 @@ header {
 
 header nav a {
   font-weight: bold;
-  color: #FF5617;
+  color: #ff5617;
   position: relative;
 }
 
@@ -21,18 +21,18 @@ header nav a + a {
   margin-left: 20px;
 }
 
-header nav a:after {
+header nav a::after {
   content: '';
   position: absolute;
   bottom: -3px;
   left: 0;
   height: 2px;
-  background: #FF5617;
+  background: #ff5617;
   transition: all 150ms ease-in-out;
   width: 0%;
 }
 
-header nav a:hover:after {
+header nav a:hover::after {
   width: 100%;
 }
 
@@ -89,6 +89,7 @@ header nav a:hover:after {
   transition: background 200ms linear;
   display: block;
   color: #000;
+  width: 100%;
 }
 
 .dropdownOption:hover {
@@ -108,6 +109,7 @@ header nav a:hover:after {
   header nav {
     display: none;
   }
+
   .hamburger {
     display: block;
   }

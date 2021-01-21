@@ -19,14 +19,14 @@
 
 .userInfo {
   margin-left: 30px;
-  font-family: Roboto, sans-serif;
 }
 
 .userInfo img {
   border-radius: 9999px;
 }
 
-.name, .email {
+.name,
+.email {
   margin-top: 18px;
 }
 
@@ -54,23 +54,26 @@
   cursor: pointer;
   display: flex;
   align-items: center;
+  width: 100%;
+  background: none;
+  font-size: 16px;
 }
 
 .link:hover,
 .link:focus {
-  background: #DDD;
+  background: #ddd;
 }
 
 .link > span {
   margin-right: 10px;
 }
 
-.link.active:after {
+.link.active::after {
   content: '';
   position: absolute;
   top: 5px;
   left: 0;
   height: calc(100% - 10px);
   width: 4px;
-  background: #FF5617;
+  background: #ff5617;
 }

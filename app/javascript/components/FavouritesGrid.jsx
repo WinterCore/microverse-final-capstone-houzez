@@ -1,18 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {fetchFavourites} from '../store/houses/actions';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { fetchFavourites } from '../store/houses/actions';
 
 import ApiResourceRenderer from './ApiResourceRenderer';
 import HousesGridItem from './HousesGridItem';
 
-import {houseSnippet} from '../common-prop-types';
+import { houseSnippet } from '../common-prop-types';
 
 import utilStyles from '../utility.module.css';
 
 const FavouritesGrid = ({ data }) => {
-  const items = data.map(item => <HousesGridItem key={item.id} {...item} />);
+  const items = data.map(item => (
+    <HousesGridItem
+      key={item.id}
+      id={item.id}
+      name={item.name}
+      images={item.images}
+      price_per_month={item.price_per_month}
+    />
+  ));
 
   return (
     <div className={utilStyles.itemsGrid}>
@@ -21,7 +29,9 @@ const FavouritesGrid = ({ data }) => {
   );
 };
 
-const FavouritesGridRenderer = ({ isLoading, data, error, fetchHouses }) => {
+const FavouritesGridRenderer = ({
+  isLoading, data, error, fetchHouses,
+}) => {
   React.useEffect(() => fetchHouses(), [fetchHouses]);
 
   return (
@@ -37,6 +47,13 @@ const FavouritesGridRenderer = ({ isLoading, data, error, fetchHouses }) => {
   );
 };
 
+FavouritesGrid.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.shape(houseSnippet)),
+};
+
+FavouritesGrid.defaultProps = {
+  data: null,
+};
 
 FavouritesGridRenderer.propTypes = {
   data: PropTypes.arrayOf(PropTypes.shape(houseSnippet)),
@@ -45,7 +62,14 @@ FavouritesGridRenderer.propTypes = {
   fetchHouses: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => state.houses;
-const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchHouses: fetchFavourites }, dispatch);
+FavouritesGridRenderer.defaultProps = {
+  data: null,
+  error: null,
+};
+
+const mapStateToProps = state => state.houses;
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({ fetchHouses: fetchFavourites }, dispatch)
+);
 
 export default connect(mapStateToProps, mapDispatchToProps)(FavouritesGridRenderer);

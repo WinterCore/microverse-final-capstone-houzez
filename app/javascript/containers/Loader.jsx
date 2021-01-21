@@ -36,9 +36,9 @@ const Loader = ({ color, width, className }) => (
 );
 
 Loader.propTypes = {
-  color: PropTypes.string.isRequired,
-  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  className: PropTypes.string.isRequired,
+  color: PropTypes.string,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  className: PropTypes.string,
 };
 
 Loader.defaultProps = {
