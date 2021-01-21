@@ -26,7 +26,7 @@
     "turbolinks": "^5.2.0"
   },
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint \"**/*.{js,jsx}\"",
     "lint:css": "stylelint \"**/*.{css,scss}\""
   },
   "version": "0.1.0",
