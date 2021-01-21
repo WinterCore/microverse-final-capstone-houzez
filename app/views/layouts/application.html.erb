@@ -7,11 +7,16 @@
     <%= csp_meta_tag %>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css' %>
     <%= javascript_pack_tag 'application' %>
+    <script>
+      window.API_URL = "<%= Rails.env.development? ? "http://localhost:3000/api" : "https://houzez.upperdown.me/api" %>";
+    </script>
   </head>
 
   <body>
