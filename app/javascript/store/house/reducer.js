@@ -22,7 +22,7 @@ const houseReducer = (state = INITIAL_STATE, action) => {
     case FETCH_HOUSE_ERROR:
       return { ...INITIAL_STATE, error: action.payload };
     case CHANGE_HOUSE_FAVOURITE_STATE:
-      return { ...state, isFavouriteLoading: false, data: { ...state.data, favourited: action.payload } };
+      return { ...state, data: { ...state.data, favourited: action.payload } };
     default:
       return state;
   }
