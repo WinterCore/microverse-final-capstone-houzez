@@ -20,7 +20,7 @@ export const fetch = id => async dispatch => {
 };
 
 export const changeFavourite = (houseId, newState) => async dispatch => {
-  let data = await Api(newState ? FAVOURITE_HOUSE(houseId) : UNFAVOURITE_HOUSE(houseId));
+  const data = await Api(newState ? FAVOURITE_HOUSE(houseId) : UNFAVOURITE_HOUSE(houseId));
   dispatch(createAction(CHANGE_HOUSE_FAVOURITE_STATE, newState));
   return data.data;
 };
