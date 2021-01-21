@@ -24,7 +24,12 @@ const housesReducer = (state = INITIAL_STATE, action) => {
       };
     case FETCH_HOUSES_SUCCESS:
       return {
-        ...action.payload, isLoading: false, error: null, isLoadingMore: false, hasMore: true,
+        page: 1,
+        ...action.payload,
+        isLoading: false,
+        error: null,
+        isLoadingMore: false,
+        hasMore: true,
       };
     case FETCH_HOUSES_ERROR:
       return {

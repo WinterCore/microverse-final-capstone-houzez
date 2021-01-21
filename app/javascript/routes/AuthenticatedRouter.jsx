@@ -8,6 +8,7 @@ import Header from '../containers/Header';
 
 import Index from '../routes/Index';
 import House from '../routes/House';
+import Favourites from '../routes/Favourites';
 
 const AuthenticatedRouter = ({ isLoggedIn }) => {
   if (!isLoggedIn) {
@@ -20,6 +21,7 @@ const AuthenticatedRouter = ({ isLoggedIn }) => {
       <Switch>
         <Route exact path="/" component={ Index } />
         <Route exact path="/houses/:id" component={ House } />
+        <Route exact path="/favourites" component={ Favourites } />
       </Switch>
     </>
   );
