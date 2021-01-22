@@ -24,7 +24,7 @@ describe('FavouritesGrid Component', () => {
       for (let i = 0; i < favourites.length; i += 1) {
         const favourite = favourites[i];
         screen.getByText(favourite.name);
-        screen.getByText(favourite.price_per_month.price_per_month.toLocaleString());
+        screen.getByText(new RegExp(favourite.price_per_month.toLocaleString()));
       }
     });
   });
