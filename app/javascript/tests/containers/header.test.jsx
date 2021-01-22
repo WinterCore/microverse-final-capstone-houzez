@@ -36,6 +36,34 @@ describe('Header Container', () => {
     expect(handleSidenavToggle).toHaveBeenCalled();
   });
 
+  test('Redirects to the houses route when the user clicks on the houses link', async () => {
+    render(
+      <>
+        <Route exact path="/header" render={() => <Header handleSidenavToggle={handleSidenavToggle} />} />
+        <Route exact path="/" render={() => <div>HOUSES ROUTE</div>} />
+      </>,
+      { initialState, initialRoute: '/header' },
+    );
+
+    fireEvent.click(screen.getByText('Houses'));
+
+    await screen.findByText('HOUSES ROUTE');
+  });
+
+  test('Redirects to the favourites route when the user clicks on the favourites link', async () => {
+    render(
+      <>
+        <Route exact path="/header" render={() => <Header handleSidenavToggle={handleSidenavToggle} />} />
+        <Route exact path="/favourites" render={() => <div>FAVOURITES ROUTE</div>} />
+      </>,
+      { initialState, initialRoute: '/header' },
+    );
+
+    fireEvent.click(screen.getByText('Favourites'));
+
+    await screen.findByText('FAVOURITES ROUTE');
+  });
+
   test('Redirects to the login page when the user clicks on the logout button', async () => {
     render(
       <>
