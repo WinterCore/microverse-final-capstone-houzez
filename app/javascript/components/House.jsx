@@ -53,7 +53,7 @@ const House = ({
               <div className={style.price}>
                 <span>$</span>
                 { /* eslint-disable camelcase */ }
-                {price_per_month}
+                {price_per_month.toLocaleString()}
                 { /* eslint-enable camelcase */ }
               </div>
               <div>per month</div>
