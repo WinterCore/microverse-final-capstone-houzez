@@ -40,8 +40,7 @@ describe('Filter Component', () => {
 
       return houseTypes.map(x => (x.id === id ? (
         <div key={x.name}>
-          CONTENT
-          {x.name}
+          {`CONTENT ${x.name}`}
         </div>
       ) : <div key={x.name} />));
     };
