@@ -10,11 +10,14 @@
   height: 90%;
 }
 
-.sidenav.open {
-  top: 5%;
-  width: 300px;
-  left: 0;
-  visibility: visible;
+
+@media (max-width: 768px) {
+  .sidenav.open {
+    top: 5%;
+    width: 300px;
+    left: 0;
+    visibility: visible;
+  }
 }
 
 .userInfo {
