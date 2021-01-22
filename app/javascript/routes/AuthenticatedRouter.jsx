@@ -19,7 +19,7 @@ const AuthenticatedRouter = ({ isLoggedIn }) => {
   React.useEffect(() => {
     document.body.style.overflow = isSidenavOpen ? 'hidden' : 'auto';
     document.body.parentElement.style.overflow = isSidenavOpen ? 'hidden' : 'auto';
-  });
+  }, [isSidenavOpen]);
 
   if (!isLoggedIn) {
     return <Redirect to="/login" />;

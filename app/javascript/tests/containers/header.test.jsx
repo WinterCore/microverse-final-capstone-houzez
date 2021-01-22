@@ -13,6 +13,7 @@ describe('Header Container', () => {
   let initialState;
   let handleSidenavToggle;
   let user;
+
   beforeEach(() => {
     user = { ...data.user(), token: 'wot' };
     initialState = { ...INITIAL_STATE, user: { ...INITIAL_STATE.user, user } };
