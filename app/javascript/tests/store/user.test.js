@@ -22,21 +22,55 @@ jest.mock('../../api/index', () => {
 
 describe('User store', () => {
   describe('User actions', () => {
-    it(`Should create ${actions.AUTHENTICATING} and ${actions.LOGIN} upon a successful login`, async () => {
-      const token = faker.git.commitSha();
-      const user = data.user();
-      axios.mockResolvedValueOnce({ data: { data: user, token } });
+    describe('Login', () => {
+      it(`Should create ${actions.AUTHENTICATING} and ${actions.LOGIN} upon a successful login`, async () => {
+        const token = faker.git.commitSha();
+        const user = data.user();
+        axios.mockResolvedValueOnce({ data: { data: user, token } });
 
-      const expectedActions = [
-        { type: actions.AUTHENTICATING },
-        { type: actions.LOGIN, payload: { ...user, token } },
-      ];
+        const expectedActions = [
+          { type: actions.AUTHENTICATING },
+          { type: actions.LOGIN, payload: { ...user, token } },
+        ];
 
-      const store = mockStore(INITIAL_STATE);
+        const store = mockStore(INITIAL_STATE);
 
-      await store.dispatch(actions.login('logintoken'));
+        await store.dispatch(actions.login('logintoken'));
 
-      expect(store.getActions()).toEqual(expectedActions);
+        expect(store.getActions()).toEqual(expectedActions);
+      });
+
+      it('Should store the logged in user in the localStorage and set a default value for the Authorization header to the user\'s token in axios', async () => {
+        const token = faker.git.commitSha();
+        const user = data.user();
+        axios.mockResolvedValueOnce({ data: { data: user, token } });
+
+        const store = mockStore(INITIAL_STATE);
+
+        await store.dispatch(actions.login('logintoken'));
+
+        // Setting a default value for the Authorization header
+        expect(axios.defaults.headers.common.Authorization).toEqual(`Bearer ${token}`);
+        // Storing the user in localStorage
+        expect(JSON.parse(window.localStorage.getItem('user'))).toEqual({ ...user, token });
+      });
+    });
+
+    describe('Logout', () => {
+      it('Should clear the user from the localStorage and remove the default Authorization header from axios', async () => {
+        const token = faker.git.commitSha();
+        const user = data.user();
+        axios.mockResolvedValueOnce({ data: { data: user, token } });
+
+        const store = mockStore(INITIAL_STATE);
+
+        await store.dispatch(actions.logout());
+
+        // Setting a default value for the Authorization header
+        expect(axios.defaults.headers.common.Authorization).toEqual('');
+        // Storing the user in localStorage
+        expect(JSON.parse(window.localStorage.getItem('user'))).toEqual(null);
+      });
     });
   });
 
