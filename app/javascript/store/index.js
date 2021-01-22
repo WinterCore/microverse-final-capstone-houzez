@@ -16,16 +16,21 @@ export const INITIAL_STATE = {
 };
 
 const myCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-const store = createStore(
-  combineReducers({
-    user: userReducer,
-    houses: housesReducer,
-    houseTypes: houseTypesReducer,
-    house: houseReducer,
-  }),
-  INITIAL_STATE,
-  myCompose(applyMiddleware(ReduxThunk)),
+const myCreateStore = (initialState = INITIAL_STATE) => (
+  createStore(
+    combineReducers({
+      user: userReducer,
+      houses: housesReducer,
+      houseTypes: houseTypesReducer,
+      house: houseReducer,
+    }),
+    initialState,
+    myCompose(applyMiddleware(ReduxThunk)),
+  )
 );
 
-export default store;
+export {
+  myCreateStore as createStore,
+};
+
+export default myCreateStore();
