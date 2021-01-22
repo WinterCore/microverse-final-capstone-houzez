@@ -1,3 +1,5 @@
+import faker from 'faker';
+
 import * as actions from '../../store/user/actions';
 import reducer, { INITIAL_STATE as USER_INITIAL_STATE } from '../../store/user/reducer';
 
@@ -21,11 +23,13 @@ jest.mock('../../api/index', () => {
 describe('User store', () => {
   describe('User actions', () => {
     it(`Should create ${actions.AUTHENTICATING} and ${actions.LOGIN} upon a successful login`, async () => {
-      axios.mockResolvedValueOnce({ data: { data: data.user, token: 'token' } });
+      const token = faker.git.commitSha();
+      const user = data.user();
+      axios.mockResolvedValueOnce({ data: { data: user, token } });
 
       const expectedActions = [
         { type: actions.AUTHENTICATING },
-        { type: actions.LOGIN, payload: { ...data.user, token: 'token' } },
+        { type: actions.LOGIN, payload: { ...user, token } },
       ];
 
       const store = mockStore(INITIAL_STATE);
@@ -60,13 +64,15 @@ describe('User store', () => {
     });
 
     it(`Should handle ${actions.LOGIN}`, () => {
+      const token = faker.git.commitSha();
+      const user = data.user();
       const state = reducer(
         undefined,
-        createAction(actions.LOGIN, { ...data.user, token: 'token' }),
+        createAction(actions.LOGIN, { ...user, token }),
       );
 
       expect(state)
-        .toEqual({ ...USER_INITIAL_STATE, user: { ...data.user, token: 'token' } });
+        .toEqual({ ...USER_INITIAL_STATE, user: { ...user, token } });
     });
 
     it(`Should handle ${actions.LOGOUT}`, () => {

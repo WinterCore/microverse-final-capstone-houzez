@@ -14,7 +14,7 @@ describe('Header Container', () => {
   let handleSidenavToggle;
   let user;
   beforeEach(() => {
-    user = { ...data.user, token: 'wot' };
+    user = { ...data.user(), token: 'wot' };
     initialState = { ...INITIAL_STATE, user: { ...INITIAL_STATE.user, user } };
     handleSidenavToggle = jest.fn();
   });
@@ -47,6 +47,7 @@ describe('Header Container', () => {
 
     fireEvent.click(screen.getByText('Logout'));
 
-    await screen.findByText('WinterCore');
+    await screen.findByText('LOGIN ROUTE');
+    screen.findByText('Logged out succcessfully!'); // Logout notification
   });
 });

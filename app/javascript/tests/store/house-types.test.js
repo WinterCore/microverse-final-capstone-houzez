@@ -17,11 +17,12 @@ jest.mock('../../api/index', () => ({
 describe('House types store', () => {
   describe('House types actions', () => {
     it(`Should create ${actions.FETCH_HOUSE_TYPES} and ${actions.FETCH_HOUSE_TYPES_SUCCESS} when fetching a house succeeds`, async () => {
-      axios.mockResolvedValueOnce({ data: { data: [data.houseType] } });
+      const houseTypes = [data.houseType()];
+      axios.mockResolvedValueOnce({ data: { data: houseTypes } });
 
       const expectedActions = [
         { type: actions.FETCH_HOUSE_TYPES },
-        { type: actions.FETCH_HOUSE_TYPES_SUCCESS, payload: [data.houseType] },
+        { type: actions.FETCH_HOUSE_TYPES_SUCCESS, payload: houseTypes },
       ];
 
       const store = mockStore(INITIAL_STATE);
@@ -58,11 +59,12 @@ describe('House types store', () => {
     });
 
     it(`Should handle ${actions.FETCH_HOUSE_TYPES_SUCCESS}`, () => {
+      const houseTypes = [data.houseType()];
       const state = reducer(
         undefined,
-        createAction(actions.FETCH_HOUSE_TYPES_SUCCESS, [data.houseType]),
+        createAction(actions.FETCH_HOUSE_TYPES_SUCCESS, houseTypes),
       );
-      expect(state).toEqual({ ...HOUSE_TYPES_INITIAL_STATE, data: [data.houseType] });
+      expect(state).toEqual({ ...HOUSE_TYPES_INITIAL_STATE, data: houseTypes });
     });
 
     it(`Should handle ${actions.FETCH_HOUSE_TYPES_ERROR}`, () => {
