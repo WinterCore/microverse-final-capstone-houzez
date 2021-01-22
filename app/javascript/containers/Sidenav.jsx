@@ -13,50 +13,57 @@ import style from './Sidenav.module.css';
 import utilStyle from '../utility.module.css';
 
 const Sidenav = ({
-  user, isOpen, location: { pathname }, logout,
-}) => (
-  <div className={classnames(style.sidenav, { [style.open]: isOpen })}>
-    <div>
-      <div className={style.userInfo}>
-        <img src={user.picture} alt={user.name} />
-        <div className={style.name}>{user.name}</div>
-        <div className={style.email}>{user.email}</div>
+  user, isOpen, location: { pathname }, history, logout,
+}) => {
+  const handleLogout = () => {
+    logout();
+    history.push('/login');
+  };
+
+  return (
+    <div className={classnames(style.sidenav, { [style.open]: isOpen })}>
+      <div>
+        <div className={style.userInfo}>
+          <img src={user.picture} alt={user.name} />
+          <div className={style.name}>{user.name}</div>
+          <div className={style.email}>{user.email}</div>
+        </div>
+        <div className={style.links}>
+          <Link
+            className={classnames({ [style.active]: pathname === '/' }, style.link)}
+            to="/"
+          >
+            <span className="material-icons">
+              home
+            </span>
+            Houses
+          </Link>
+          <Link
+            className={classnames({ [style.active]: pathname === '/favourites' }, style.link)}
+            to="/favourites"
+          >
+            <span className="material-icons">
+              favorite
+            </span>
+            Favourites
+          </Link>
+        </div>
       </div>
-      <div className={style.links}>
-        <Link
-          className={classnames({ [style.active]: pathname === '/' }, style.link)}
-          to="/"
+      <div>
+        <button
+          className={classnames(style.link, utilStyle.bland)}
+          type="button"
+          onClick={handleLogout}
         >
           <span className="material-icons">
-            home
+            power_settings_new
           </span>
-          Houses
-        </Link>
-        <Link
-          className={classnames({ [style.active]: pathname === '/favourites' }, style.link)}
-          to="/favourites"
-        >
-          <span className="material-icons">
-            favorite
-          </span>
-          Favourites
-        </Link>
+          Logout
+        </button>
       </div>
     </div>
-    <div>
-      <button
-        className={classnames(style.link, utilStyle.bland)}
-        type="button"
-        onClick={logout}
-      >
-        <span className="material-icons">
-          power_settings_new
-        </span>
-        Logout
-      </button>
-    </div>
-  </div>
-);
+  );
+};
 
 const mapStateToProps = state => state.user;
 const mapDispatchToProps = dispatch => bindActionCreators({ logout }, dispatch);
@@ -68,6 +75,7 @@ Sidenav.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired,
   }).isRequired,
+  history: PropTypes.shape({ push: PropTypes.func.isRequired }).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Sidenav));
