@@ -19,26 +19,16 @@ export const INITIAL_STATE = {
 const housesReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCH_HOUSES:
-      return {
-        data: null, isLoading: true, error: null, page: 1, isLoadingMore: false, hasMore: true,
-      };
+      return { ...INITIAL_STATE, isLoading: true };
     case FETCH_HOUSES_SUCCESS:
       return {
-        page: 1,
+        ...INITIAL_STATE,
         ...action.payload,
-        isLoading: false,
-        error: null,
-        isLoadingMore: false,
-        hasMore: true,
       };
     case FETCH_HOUSES_ERROR:
       return {
-        data: null,
-        isLoading: false,
+        ...INITIAL_STATE,
         error: action.payload,
-        page: 1,
-        isLoadingMore: false,
-        hasMore: true,
       };
     case FETCH_MORE_HOUSES:
       return {
@@ -54,9 +44,7 @@ const housesReducer = (state = INITIAL_STATE, action) => {
         hasMore: action.payload.data.length > 0,
       };
     case FETCH_MORE_HOUSES_ERROR:
-      return {
-        ...state, isLoading: false, error: null, isLoadingMore: false, hasMore: true,
-      };
+      return { ...state, isLoadingMore: false };
     default:
       return state;
   }

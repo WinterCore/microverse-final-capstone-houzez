@@ -8,7 +8,7 @@ import housesReducer, { INITIAL_STATE as HOUSES_INITIAL_STATE } from './houses/r
 import houseTypesReducer, { INITIAL_STATE as HOUSE_TYPES_INITIAL_STATE } from './house-types/reducer';
 import houseReducer, { INITIAL_STATE as HOUSE_INITIAL_STATE } from './house/reducer';
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   user: USER_INITIAL_STATE,
   houses: HOUSES_INITIAL_STATE,
   houseTypes: HOUSE_TYPES_INITIAL_STATE,

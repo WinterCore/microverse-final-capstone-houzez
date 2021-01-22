@@ -14,7 +14,7 @@ export const fetch = id => async dispatch => {
     const { data: { data } } = await Api(GET_HOUSE(id));
     dispatch(createAction(FETCH_HOUSE_SUCCESS, data));
   } catch (e) {
-    if (e.response.status === 404) dispatch(createAction(FETCH_HOUSE_ERROR, 'Not Found!'));
+    if (e.response && e.response.status === 404) dispatch(createAction(FETCH_HOUSE_ERROR, 'Not Found!'));
     else dispatch(createAction(FETCH_HOUSE_ERROR, 'Something happened!'));
   }
 };

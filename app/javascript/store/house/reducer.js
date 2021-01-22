@@ -9,8 +9,6 @@ export const INITIAL_STATE = {
   data: null,
   isLoading: false,
   error: null,
-  isFavouriteLoading: false,
-  favouriteError: null,
 };
 
 const houseReducer = (state = INITIAL_STATE, action) => {

@@ -8,9 +8,13 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.2.1",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.3",
+    "@testing-library/user-event": "^12.6.0",
     "axios": "^0.21.1",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "classnames": "^2.2.6",
+    "jest": "^26.6.3",
     "notistack": "^1.0.3",
     "prop-types": "^15.7.2",
     "query-string": "^6.13.8",
@@ -22,12 +26,14 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
+    "redux-mock-store": "^1.5.4",
     "redux-thunk": "^2.3.0",
     "turbolinks": "^5.2.0"
   },
   "scripts": {
     "lint": "eslint \"**/*.{js,jsx}\"",
-    "lint:css": "stylelint \"**/*.{css,scss}\""
+    "lint:css": "stylelint \"**/*.{css,scss}\"",
+    "test": "jest ."
   },
   "version": "0.1.0",
   "devDependencies": {

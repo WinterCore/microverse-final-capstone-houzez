@@ -20,7 +20,7 @@ export const fetch = (type, page = 1) => async dispatch => {
     const { data: { data } } = await Api({ ...GET_HOUSES(), params: { type, page } });
     dispatch(createAction(actions[1], { data, page }));
   } catch (e) {
-    dispatch(createAction(actions[2], 'Something happened'));
+    dispatch(createAction(actions[2], 'Something happened!'));
   }
 };
 
@@ -31,6 +31,6 @@ export const fetchFavourites = () => async dispatch => {
     const { data: { data } } = await Api(GET_FAVOURITES());
     dispatch(createAction(FETCH_HOUSES_SUCCESS, { data }));
   } catch (e) {
-    dispatch(createAction(FETCH_HOUSES_ERROR, 'Something happened'));
+    dispatch(createAction(FETCH_HOUSES_ERROR, 'Something happened!'));
   }
 };

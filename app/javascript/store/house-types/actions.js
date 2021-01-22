@@ -13,6 +13,6 @@ export const fetch = () => async dispatch => {
     const { data: { data } } = await Api(GET_HOUSE_TYPES());
     dispatch(createAction(FETCH_HOUSE_TYPES_SUCCESS, data));
   } catch (e) {
-    dispatch(createAction(FETCH_HOUSE_TYPES_ERROR, 'Something happened'));
+    dispatch(createAction(FETCH_HOUSE_TYPES_ERROR, 'Something happened!'));
   }
 };
