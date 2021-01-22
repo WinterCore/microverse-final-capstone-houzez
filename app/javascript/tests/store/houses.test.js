@@ -18,11 +18,12 @@ jest.mock('../../api/index', () => ({
 describe('Houses store', () => {
   describe('Houses actions', () => {
     it(`Should create ${actions.FETCH_HOUSES} and ${actions.FETCH_HOUSES_SUCCESS} when listing houses succeeds`, async () => {
-      axios.mockResolvedValueOnce({ data: { data: [data.houseSnippet] } });
+      const houseSnippets = [data.houseSnippet()];
+      axios.mockResolvedValueOnce({ data: { data: houseSnippets } });
 
       const expectedActions = [
         { type: actions.FETCH_HOUSES },
-        { type: actions.FETCH_HOUSES_SUCCESS, payload: { data: [data.houseSnippet], page: 1 } },
+        { type: actions.FETCH_HOUSES_SUCCESS, payload: { data: houseSnippets, page: 1 } },
       ];
 
       const store = mockStore(INITIAL_STATE);
@@ -48,13 +49,14 @@ describe('Houses store', () => {
     });
 
     it(`Should create ${actions.FETCH_MORE_HOUSES} and ${actions.FETCH_MORE_HOUSES_SUCCESS} when fetching more houses succeeds`, async () => {
-      axios.mockResolvedValueOnce({ data: { data: [data.houseSnippet] } });
+      const houseSnippets = [data.houseSnippet()];
+      axios.mockResolvedValueOnce({ data: { data: houseSnippets } });
 
       const expectedActions = [
         { type: actions.FETCH_MORE_HOUSES },
         {
           type: actions.FETCH_MORE_HOUSES_SUCCESS,
-          payload: { data: [data.houseSnippet], page: 2 },
+          payload: { data: houseSnippets, page: 2 },
         },
       ];
 
@@ -96,11 +98,12 @@ describe('Houses store', () => {
     });
 
     it(`Should create ${actions.FETCH_MORE_HOUSES} and ${actions.FETCH_MORE_HOUSES_SUCCESS} when fetching favourites succeeds`, async () => {
-      axios.mockResolvedValueOnce({ data: { data: [data.houseSnippet] } });
+      const houseSnippets = [data.houseSnippet()];
+      axios.mockResolvedValueOnce({ data: { data: houseSnippets } });
 
       const expectedActions = [
         { type: actions.FETCH_HOUSES },
-        { type: actions.FETCH_HOUSES_SUCCESS, payload: { data: [data.houseSnippet] } },
+        { type: actions.FETCH_HOUSES_SUCCESS, payload: { data: houseSnippets } },
       ];
 
       const store = mockStore(INITIAL_STATE);
@@ -122,11 +125,12 @@ describe('Houses store', () => {
     });
 
     it(`Should handle ${actions.FETCH_HOUSES_SUCCESS}`, () => {
+      const houseSnippets = [data.houseSnippet()];
       const state = reducer(
         undefined,
-        createAction(actions.FETCH_HOUSES_SUCCESS, { data: [data.houseSnippet], page: 1 }),
+        createAction(actions.FETCH_HOUSES_SUCCESS, { data: houseSnippets, page: 1 }),
       );
-      expect(state).toEqual({ ...HOUSES_INITIAL_STATE, data: [data.houseSnippet] });
+      expect(state).toEqual({ ...HOUSES_INITIAL_STATE, data: houseSnippets });
     });
 
     it(`Should handle ${actions.FETCH_HOUSES_ERROR}`, () => {
@@ -143,13 +147,15 @@ describe('Houses store', () => {
     });
 
     it(`Should handle ${actions.FETCH_MORE_HOUSES_SUCCESS}`, () => {
+      const houseSnippets = [data.houseSnippet()];
+      const moreHouseSnippets = [data.houseSnippet()];
       const state = reducer(
-        { ...HOUSES_INITIAL_STATE, data: [data.houseSnippet] },
-        createAction(actions.FETCH_MORE_HOUSES_SUCCESS, { data: [data.houseSnippet], page: 2 }),
+        { ...HOUSES_INITIAL_STATE, data: houseSnippets },
+        createAction(actions.FETCH_MORE_HOUSES_SUCCESS, { data: moreHouseSnippets, page: 2 }),
       );
       expect(state)
         .toEqual({
-          ...HOUSES_INITIAL_STATE, page: 2, data: [data.houseSnippet, data.houseSnippet],
+          ...HOUSES_INITIAL_STATE, page: 2, data: [...houseSnippets, ...moreHouseSnippets],
         });
     });
 
