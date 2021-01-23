@@ -10,6 +10,7 @@ import Index from './Index';
 import House from './House';
 import Favourites from './Favourites';
 import Sidenav from '../containers/Sidenav';
+import NotFound from '../containers/NotFound';
 
 import utilStyle from '../utility.module.css';
 
@@ -44,6 +45,7 @@ const AuthenticatedRouter = ({ isLoggedIn }) => {
             <Route exact path="/" component={Index} />
             <Route exact path="/houses/:id" component={House} />
             <Route exact path="/favourites" component={Favourites} />
+            <Route component={NotFound} />
           </Switch>
         </main>
       </div>

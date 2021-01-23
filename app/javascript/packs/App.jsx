@@ -6,6 +6,7 @@ import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 
 import Login from '../routes/Login';
 import AuthenticatedRouter from '../routes/AuthenticatedRouter';
+import NotFound from '../containers/NotFound';
 
 import store from '../store/index';
 
@@ -18,6 +19,7 @@ const App = () => (
         <Switch>
           <Route exact path="/login" component={Login} />
           <Route path="/" component={AuthenticatedRouter} />
+          <Route component={NotFound} />
         </Switch>
       </Router>
     </SnackbarProvider>
