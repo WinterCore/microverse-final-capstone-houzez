@@ -30,6 +30,7 @@ gem 'oj'
 gem 'rabl'
 gem 'rack-cors'
 gem 'react-rails'
+gem 'devise'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false

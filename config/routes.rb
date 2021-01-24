@@ -1,4 +1,19 @@
 Rails.application.routes.draw do
+
+  scope module: :admin, path: 'admin' do
+    get '/', to: redirect('/admin/dashboard')
+    devise_for :admins, skip: :all
+    devise_scope :admin do 
+      get 'login', to: 'sessions#new', as: :new_admin_session
+      post 'login', to: 'sessions#create', as: :admin_session
+      get 'logout', to: 'sessions#destroy', as: :destroy_admin_session
+    end
+
+    authenticate :admin do
+      get 'dashboard' => 'dashboard#index', :as => :user_root
+    end
+  end
+
   namespace :api do
     post '/login', to: 'users#login'
 
