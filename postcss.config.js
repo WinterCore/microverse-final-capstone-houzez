@@ -12,7 +12,7 @@ const plugins = [
 
 // Only run PurgeCSS in production (you can also add staging here)
 if (process.env.RAILS_ENV === "production") {
-  environment.plugins.push(
+  plugins.push(
     require('@fullhuman/postcss-purgecss')({
       content: [
         './app/**/*.html.erb',
