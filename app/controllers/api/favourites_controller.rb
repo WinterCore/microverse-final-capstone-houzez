@@ -3,6 +3,6 @@ class Api::FavouritesController < ApiController
 
   def index
     @houses = logged_in_user.favourited_houses.includes(:house_type)
-    render 'houses/index'
+    render 'api/houses/index'
   end
 end

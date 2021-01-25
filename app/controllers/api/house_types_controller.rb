@@ -3,6 +3,6 @@ class Api::HouseTypesController < ApiController
 
   def index
     @house_types = HouseType.all
-    render 'house_types/index'
+    render 'api/house_types/index'
   end
 end

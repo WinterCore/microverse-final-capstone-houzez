@@ -12,13 +12,13 @@ class Api::HousesController < ApiController
       .offset(@page * HOUSES_PER_PAGE)
       .limit(HOUSES_PER_PAGE)
 
-    render 'houses/index'
+    render 'api/houses/index'
   end
 
   def show
     @house = House.includes(:house_type).find(params[:id])
 
-    render 'houses/show'
+    render 'api/houses/show'
   end
 
   def favourite
