@@ -16,6 +16,7 @@
         <%= javascript_pack_tag 'application' %>
         <script>
             window.API_URL = "<%= Rails.env.development? ? "http://localhost:3000/api" : "https://houzez.upperdown.me/api" %>";
+            window.GOOGLE_CLIENT_ID = "<%= Rails.application.credentials.google_sign_in[:client_id] %>";
         </script>
     </head>
 
