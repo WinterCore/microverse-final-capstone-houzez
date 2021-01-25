@@ -1,5 +1,5 @@
 class StaticController < ApplicationController
-  layout "frontend"
+  layout 'frontend'
 
   def index; end
 end

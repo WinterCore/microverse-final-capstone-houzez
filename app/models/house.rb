@@ -3,7 +3,7 @@ class House < ApplicationRecord
   has_many :favourites
   has_many :favouritors, through: :favourites, source: :user
   scope :group_by_month, -> { group("date_trunc('month', created_at)") }
-  scope :last_year, -> { where("created_at >= ?", (Time.zone.now - 1.year).beginning_of_year) }
+  scope :last_year, -> { where('created_at >= ?', (Time.zone.now - 1.year).beginning_of_year) }
 
   scope :belong_to_type, ->(type) { where(house_type_id: type) unless type.nil? }
 

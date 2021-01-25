@@ -13,7 +13,7 @@
                     <%= f.text_field :price_per_month, type: "number", autofocus: true, placeholder: "Price per Month", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-red-500 focus:border-red-500 focus:z-10 sm:text-sm" %>
                 </div>
                 <div>
-                    <%= f.select :house_type_id, @houseTypes, {}, { class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-red-500 focus:border-red-500 focus:z-10 sm:text-sm" } %>
+                    <%= f.select :house_type_id, @house_types, {}, { class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-red-500 focus:border-red-500 focus:z-10 sm:text-sm" } %>
                 </div>
                 <div>
                     <%= f.text_area :description, autofocus: true, placeholder: "Description", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-red-500 focus:border-red-500 focus:z-10 sm:text-sm" %>
