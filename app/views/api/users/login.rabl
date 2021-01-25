@@ -1,4 +1,4 @@
 node(:token) { @token }
 child @user => :data do
-  extends 'users/show'
+  extends 'api/users/show'
 end
