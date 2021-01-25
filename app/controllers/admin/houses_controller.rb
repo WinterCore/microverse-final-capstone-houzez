@@ -20,7 +20,9 @@ class Admin::HousesController < ApplicationController
   end
 
   def destroy
-    House.find(params[:id]).destroy
+    @house = House.find(params[:id])
+    @house.favourites.destroy_all
+    @house.destroy
     redirect_to houses_path, notice: 'House was successfully deleted.'
   end
 
