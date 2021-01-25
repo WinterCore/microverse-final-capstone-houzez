@@ -35,7 +35,7 @@ const HousesGrid = ({
     if (
       !isLoading
       && !isLoadingMore
-      && (height - window.scrollY + 60) < window.innerHeight
+      && (height - window.scrollY) < window.innerHeight
       && hasMore
     ) {
       fetchHouses(houseTypeId, page + 1);
