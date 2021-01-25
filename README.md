@@ -41,6 +41,7 @@
 ## API Documentation
 
 You'll find the api documentation under the `docs` folder in the root directory of the project.
+
 You can also [click here](https://docs.houzez.upperdown.me) to view the live version of it
 
 ## Built With
