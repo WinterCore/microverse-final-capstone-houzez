@@ -1,4 +1,4 @@
-<div class="md:flex flex-col md:flex-row md:min-h-screen w-full">
+<div class="sticky top-0 md:flex flex-col md:flex-row md:min-h-screen w-full">
   <div class="flex flex-col w-full md:w-64 text-gray-700 bg-white flex-shrink-0">
     <div class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between">
       <a href="#" class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg focus:outline-none focus:shadow-outline">Houzez Admin</a>
@@ -12,6 +12,7 @@
     <nav id="nav" class="flex-grow flex-col md:flex px-4 pb-4 md:pb-0 md:overflow-y-auto flex justify-between">
       <div>
         <%= render 'partials/sidenav/sidenav-link', path: admin_dashboard_path, text: "Dashboard"  %>
+        <%= render 'partials/sidenav/sidenav-link', path: houses_path, text: "Houses"  %>
       </div>
       <div>
         <%= render 'partials/sidenav/sidenav-link', path: destroy_admin_session_path, path: destroy_admin_session_path, text: "Logout"  %>

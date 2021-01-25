@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
     authenticate :admin do
       get 'dashboard' => 'dashboard#index', :as => :admin_dashboard
+      resources :houses, except: [:edit, :update]
     end
   end
 
