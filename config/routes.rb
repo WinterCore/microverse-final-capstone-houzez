@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     end
 
     authenticate :admin do
-      get 'dashboard' => 'dashboard#index', :as => :user_root
+      get 'dashboard' => 'dashboard#index', :as => :admin_dashboard
     end
   end
 
