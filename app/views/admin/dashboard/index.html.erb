@@ -20,7 +20,7 @@
             // The data for our dataset
             data: {
                 labels: Object.keys(stats).map(date => {
-                    var dateObj = new Date(date);
+                    var dateObj = new Date(date.slice(0, -4)); // Remove UTC from the end
                     return (dateObj.getMonth() + 1) + "/" + dateObj.getFullYear();
                 }),
                 datasets: [{
@@ -30,7 +30,6 @@
                     data: Object.values(stats)
                 }]
             },
-
             // Configuration options go here
             options: {}
         });
