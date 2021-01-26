@@ -16,8 +16,9 @@
   - [Table of Contents](#table-of-contents)
   - [Live Demo](#live-demo)
   - [Rails: How to Run Locally & Run Rspec Tests](#rails-how-to-run-locally--run-rspec-tests)
-  - [Running the frontend tests](#running-the-frontend-tests)
   - [API Documentation](#api-documentation)
+  - [Acessing the admin panel](#acessing-the-admin-panel)
+  - [Running the frontend tests](#running-the-frontend-tests)
   - [Built With](#built-with)
   - [Quick Note](#quick-note)
   - [Authors](#authors)
@@ -29,6 +30,21 @@
 
 ## [Rails: How to Run Locally & Run Rspec Tests](HOWTO.md) 
 
+## API Documentation
+
+You'll find the api documentation under the `docs` folder in the root directory of the project.
+
+You can also [click here](https://docs.houzez.upperdown.me) to view the live version of it
+
+## Acessing the admin panel
+
+You can access the admin panel using this [link](https://houzez.upperdown.me/admin/login)
+
+You can login using the following credentials.
+
+Email: `admin@mail.com`
+Password: `admin`
+
 ## Running the frontend tests
 
 - Install [Node.js](https://nodejs.org/en/)
@@ -37,12 +53,6 @@
 - Run `npm install`
 - Run `npm run test`
 - Enjoy
-
-## API Documentation
-
-You'll find the api documentation under the `docs` folder in the root directory of the project.
-
-You can also [click here](https://docs.houzez.upperdown.me) to view the live version of it
 
 ## Built With
 
