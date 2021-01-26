@@ -84,7 +84,7 @@ Feel free to check the [issues page](issues/).
 ## Acknowledgments
 
 - Microverse
-- [Design](https://www.behance.net/gallery/37706679/Circle-(Landing-page-Dashboard-Mobile-App)) by [Nelson Sakwa](https://www.behance.net/alexey_savitskiy)
+- [Design](https://www.behance.net/gallery/37706679/Circle-(Landing-page-Dashboard-Mobile-App)) by [Alexey Savitskiy](https://www.behance.net/alexey_savitskiy)
 
 ## 📝 License
 
