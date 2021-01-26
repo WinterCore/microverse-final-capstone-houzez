@@ -18,6 +18,7 @@
   - [Rails: How to Run Locally & Run Rspec Tests](#rails-how-to-run-locally--run-rspec-tests)
   - [API Documentation](#api-documentation)
   - [Acessing the admin panel](#acessing-the-admin-panel)
+  - [Database schema](#database-schema)
   - [Running the frontend tests](#running-the-frontend-tests)
   - [Built With](#built-with)
   - [Quick Note](#quick-note)
@@ -44,6 +45,10 @@ You can login using the following credentials.
 
 Email: `admin@mail.com`
 Password: `admin`
+
+## Database schema
+
+![Schema](schema.png)
 
 ## Running the frontend tests
 
