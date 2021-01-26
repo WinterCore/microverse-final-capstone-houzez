@@ -32,6 +32,7 @@ const AuthenticatedRouter = ({ isLoggedIn }) => {
     <>
       <Sidenav isOpen={isSidenavOpen} />
       <div
+        id="scrollable"
         className={
           classnames(
             utilStyle.mainOuterContainer,

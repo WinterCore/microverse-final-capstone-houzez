@@ -28,14 +28,14 @@ const HousesGrid = ({
   ));
   /* eslint-enable camelcase */
   const containerRef = React.createRef(null);
-
   const checkLoadMore = () => {
     if (!containerRef.current) return;
+    const container = document.getElementById('scrollable');
     const { height } = containerRef.current.getBoundingClientRect();
     if (
       !isLoading
       && !isLoadingMore
-      && (height - window.scrollY) < window.innerHeight
+      && (height - container.scrollTop) < window.innerHeight
       && hasMore
     ) {
       fetchHouses(houseTypeId, page + 1);
@@ -43,8 +43,9 @@ const HousesGrid = ({
   };
 
   React.useEffect(() => {
-    window.addEventListener('scroll', checkLoadMore);
-    return () => window.removeEventListener('scrol', checkLoadMore);
+    const container = document.getElementById('scrollable');
+    container.addEventListener('scroll', checkLoadMore);
+    return () => container.removeEventListener('scrol', checkLoadMore);
   });
 
   return (

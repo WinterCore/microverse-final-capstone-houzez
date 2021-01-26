@@ -11,7 +11,7 @@ const HousesGridItem = ({
 }) => (
 /* eslint-enable camelcase */
   <Link to={`/houses/${id}`} className={style.container}>
-    <div className={style.image} style={{ backgroundImage: `url("${images[0]}?${Math.random()}")` }} />
+    <div className={style.image} style={{ backgroundImage: `url("${images[0]}` }} />
     <div className={style.footer}>
       <div>
         <h2 className={style.name}>{ name }</h2>
