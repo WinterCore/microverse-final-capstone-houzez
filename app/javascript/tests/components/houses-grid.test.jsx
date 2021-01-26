@@ -21,7 +21,7 @@ describe('HousesGrid Component', () => {
     const type = faker.random.number();
     axios.mockResolvedValueOnce({ data: { data: houses } });
     render(
-      <HousesGrid />,
+      <div id="scrollable"><HousesGrid /></div>,
       { initialRoute: `/?type=${type}` },
     );
 
