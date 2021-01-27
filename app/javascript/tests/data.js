@@ -1,12 +1,14 @@
 import faker from 'faker';
 
+let id = 0;
+
 export const houseType = () => ({
-  id: faker.random.number({ min: 1, max: 1000 }),
+  id: ++id,
   name: faker.name.findName(),
 });
 
 export const houseSnippet = () => ({
-  id: faker.random.number({ min: 1, max: 1000 }),
+  id: ++id,
   name: faker.name.findName(),
   images: Array.from({ length: faker.random.number({ min: 1, max: 5 }) })
     .map(() => faker.image.imageUrl()),
@@ -21,7 +23,7 @@ export const house = () => ({
 });
 
 export const user = () => ({
-  id: faker.random.number({ min: 1, max: 1000 }),
+  id: ++id,
   name: faker.name.findName(),
   email: faker.internet.email(),
   picture: faker.image.imageUrl(),
