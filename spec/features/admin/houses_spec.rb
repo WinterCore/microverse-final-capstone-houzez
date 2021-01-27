@@ -45,6 +45,6 @@ RSpec.describe 'Houses', type: :feature do
     click_button 'Create'
 
     expect(page).to have_content(house.name)
-    expect(page).to have_content(house.id)
+    expect(page).to have_content(house.id.to_s)
   end
 end
