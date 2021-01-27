@@ -5,10 +5,10 @@ import FavouritesGrid from '../components/FavouritesGrid';
 import utilStyle from '../utility.module.css';
 
 const Index = () => (
-  <div>
+  <section>
     <h1 className={utilStyle.heading}>Your Favourites</h1>
     <FavouritesGrid />
-  </div>
+  </section>
 );
 
 export default Index;

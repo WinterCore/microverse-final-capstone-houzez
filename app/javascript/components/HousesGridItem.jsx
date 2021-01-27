@@ -11,19 +11,21 @@ const HousesGridItem = ({
 }) => (
 /* eslint-enable camelcase */
   <Link to={`/houses/${id}`} className={style.container}>
-    <div className={style.image} style={{ backgroundImage: `url("${images[0]}` }} />
-    <div className={style.footer}>
-      <div>
-        <h2 className={style.name}>{ name }</h2>
+    <article>
+      <div className={style.image} style={{ backgroundImage: `url("${images[0]}` }} />
+      <div className={style.footer}>
+        <div>
+          <h2 className={style.name}>{ name }</h2>
+        </div>
+        <div>
+          <h3 className={style.price}>
+            $
+            { price_per_month.toLocaleString() }
+          </h3>
+          <div className={style.priceSub}>per Month</div>
+        </div>
       </div>
-      <div>
-        <h3 className={style.price}>
-          $
-          { price_per_month.toLocaleString() }
-        </h3>
-        <div className={style.priceSub}>per Month</div>
-      </div>
-    </div>
+    </article>
   </Link>
 );
 

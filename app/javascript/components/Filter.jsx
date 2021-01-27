@@ -34,7 +34,7 @@ const Filter = ({
   const items = [{ id: null, name: 'All' }, ...data];
 
   return (
-    <div className={style.container}>
+    <aside className={style.container}>
       {
         items.map(({ id, name }) => (
           <Link
@@ -52,7 +52,7 @@ const Filter = ({
           </Link>
         ))
       }
-    </div>
+    </aside>
   );
 };
 

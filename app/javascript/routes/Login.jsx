@@ -40,7 +40,7 @@ const Login = ({
 
   return (
     <div className={styles.container}>
-      <div className={styles.form}>
+      <section className={styles.form}>
         <h1>Sign In</h1>
         <p>Hey there! Sign in and start looking for houses</p>
         <GoogleLogin
@@ -55,7 +55,7 @@ const Login = ({
             />
           )}
         />
-      </div>
+      </section>
     </div>
   );
 };

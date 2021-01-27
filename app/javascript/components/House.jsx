@@ -37,7 +37,7 @@ const House = ({
   };
 
   return (
-    <div className={style.outerContainer}>
+    <article className={style.outerContainer}>
       <div className={style.container}>
         <Carousel showThumbs={false} showStatus={false}>
           {images.map((img, i) => <img alt={`House ${i}`} key={img} src={img} />)}
@@ -45,10 +45,10 @@ const House = ({
         <div className={style.content}>
           <div>
             <h1>{name}</h1>
-            <div className={style.type}>
+            <h2 className={style.type}>
               Type:
               <Link to={`/?type=${house_type.id}`}>{house_type.name}</Link>
-            </div>
+            </h2>
             <div className={style.priceOuter}>
               <div className={style.price}>
                 <span>$</span>
@@ -71,7 +71,7 @@ const House = ({
           </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 
