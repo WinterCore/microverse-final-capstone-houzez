@@ -17,6 +17,7 @@ RSpec.describe 'Get Favourites Endpoint', type: :request do
     house.favouritors << user
 
     get api_favourites_path, headers: authenticated_headers(user)
+    p response.body
 
     result = {
       id: house.id,
