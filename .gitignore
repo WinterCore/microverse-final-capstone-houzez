@@ -23,7 +23,7 @@
 !/storage/.keep
 
 /public/assets
-/public/uploads
+/public/uploads/*
 !/public/uploads/.keep
 .byebug_history
 
