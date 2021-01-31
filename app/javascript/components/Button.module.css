@@ -1,0 +1,54 @@
+.button {
+  border: none;
+  padding: 12px 32px;
+  border-radius: 99999px;
+  cursor: pointer;
+  font-size: 14px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+.button.filled {
+  background: #ff5617;
+  color: white;
+  box-shadow: 1px 1px 4px rgba(255, 86, 23, 1);
+  position: relative;
+  outline: 0;
+  transition: all 250ms linear;
+}
+
+.button.filled:hover,
+.button.filled:focus {
+  transform: translateY(-2px);
+  box-shadow: 1px 1px 8px rgba(255, 86, 23, 1);
+}
+
+.button.filled:disabled,
+.button.filled:disabled:hover {
+  background: grey;
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.button.fullWidth {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  padding: 18px;
+}
+
+.button.flat {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.button.fullWidth:hover,
+.button.fullWidth:focus,
+.button.flat:hover,
+.button.flat:focus {
+  box-shadow: none;
+  transform: none;
+  background: #cc3700;
+}

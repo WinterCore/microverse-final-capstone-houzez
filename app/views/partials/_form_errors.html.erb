@@ -1,0 +1,5 @@
+<ul class="form-errors text-sm text-red-500">
+    <% resource.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+    <% end %>
+</ul>
