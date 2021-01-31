@@ -1,0 +1,81 @@
+.sidenav {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  left: -300px;
+  visibility: hidden;
+  top: 0;
+  transition: all 300ms ease-in-out;
+  height: 90%;
+}
+
+@media (max-width: 768px) {
+  .sidenav.open {
+    top: 5%;
+    width: 300px;
+    left: 0;
+    visibility: visible;
+  }
+}
+
+.userInfo {
+  margin-left: 30px;
+}
+
+.userInfo img {
+  border-radius: 9999px;
+}
+
+.name,
+.email {
+  margin-top: 18px;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.email {
+  font-size: 14px;
+  color: #555;
+}
+
+.links {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  padding: 14px 30px;
+  color: #000;
+  position: relative;
+  transition: all 150ms linear;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: none;
+  font-size: 16px;
+}
+
+.link:hover,
+.link:focus {
+  background: #ddd;
+}
+
+.link > span {
+  margin-right: 10px;
+}
+
+.link.active::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 0;
+  height: calc(100% - 10px);
+  width: 4px;
+  background: #ff5617;
+}

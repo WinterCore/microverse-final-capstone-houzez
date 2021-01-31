@@ -1,0 +1,8 @@
+.loaderContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.loader {
+  display: block;
+}

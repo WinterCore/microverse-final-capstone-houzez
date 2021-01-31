@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+  font-family: Roboto, sans-serif;
+}
+
+html,
+body {
+  min-height: 100vh;
+  font-family: Roboto, sans-serif;
+}
+
+body {
+  background: #f6fafc;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
